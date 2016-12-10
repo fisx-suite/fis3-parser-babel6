@@ -47,14 +47,11 @@ function compile(content, file, conf) {
         filename: file.subpath.substr(1) // remove start slash
     }, readBabelConfig() || {}, conf);
 
-    var parser = options.parser || exports.parser;
-    delete options.parser;
-
     // hook require when enable speed
     options.speed || qrequire.hook();
 
     // transform code
-    var result = parser.transform(content, options);
+    var result = exports.parser.transform(content, options);
 
     // extract used babel helper api
     if (result.metadata
@@ -62,7 +59,7 @@ function compile(content, file, conf) {
     ) {
         // cache the used babel helper information
         var usedHelpers = result.metadata.usedHelpers;
-        file.extras.babelHelpers = usedHelpers;
+        // file.extras.babelHelpers = usedHelpers;
 
         // all used babel helper inform cached to `fis.babelHelpers`
         var helpers = fis.babelHelpers || (fis.babelHelpers = []);

@@ -13,15 +13,14 @@ npm install fis3-parser-babel6 --save-dev
 ### Add configure to fis-conf.js
 
 ```js
+// require the parser plugin and specify the parser
+fis.require('parser-babel6').parser = require('babel-core');
+
 fis.match('/src/**.js', {
     parser: fis.plugin('babel6', {
-        parser: require('babel-core')
-        // other babel options
+        // babel options
     })
 });
-
-// or you can require the parser plugin and assign the parser
-fis.require('parser-babel6').parser = require('babel-core');
 ```
 
 By default, the babel helper api used information is saved to `file.extras.babelHelpers`, all files babel helper api used information is cached to `fis.babelHelpers`. If you using `babel-plugin-external-helpers plugin` plugin, you can lookup the used information from file `extras` or `fis.babelHelpers`.
