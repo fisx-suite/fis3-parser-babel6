@@ -1,0 +1,28 @@
+{
+  "name": "fis3-parser-babel6",
+  "version": "0.1.0",
+  "description": "A parser for fis3 to compile es6 files",
+  "main": "index.js",
+  "keywords": [
+    "fis3",
+    "fis",
+    "babel",
+    "babel6",
+    "es6"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wuhy/fis3-parser-babel6.git"
+  },
+  "bugs": {
+    "url": "http://github.com/wuhy/fis3-parser-babel6/issues"
+  },
+  "author": "sparklwhy@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "qrequire": "^0.1.1"
+  }
+}
