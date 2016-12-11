@@ -61,7 +61,7 @@ function compile(content, file, conf) {
         var usedHelpers = result.metadata.usedHelpers;
         // file.extras.babelHelpers = usedHelpers;
 
-        // all used babel helper inform cached to `fis.babelHelpers`
+        // all used babel helper info cached to `fis.babelHelpers`
         var helpers = fis.babelHelpers || (fis.babelHelpers = []);
         usedHelpers.forEach(function (item) {
             if (helpers.indexOf(item) === -1) {
@@ -88,7 +88,7 @@ function compile(content, file, conf) {
 module.exports = exports = compile;
 
 /**
- * 使用的 parser，从外部传入，不直接集成到该插件里，或者通过插件 conf 传人
+ * 使用的 parser，从外部传入，不直接集成到该插件里
  *
  * @type {Object}
  */
