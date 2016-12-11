@@ -9,6 +9,8 @@ var path = require('path');
 var fs = require('fs');
 var qrequire = require('qrequire');
 
+var speeded = false;
+
 /**
  * 读取 babel 配置
  *
@@ -48,7 +50,12 @@ function compile(content, file, conf) {
     }, readBabelConfig() || {}, conf);
 
     // hook require when enable speed
-    options.speed || qrequire.hook();
+    var needUnhook = false;
+    if (options.speed && !speeded) {
+        qrequire.hook();
+        needUnhook = true;
+        speeded = true;
+    }
 
     // transform code
     var result = exports.parser.transform(content, options);
@@ -59,18 +66,10 @@ function compile(content, file, conf) {
     ) {
         // cache the used babel helper information
         var usedHelpers = result.metadata.usedHelpers;
-        // file.extras.babelHelpers = usedHelpers;
-
-        // all used babel helper info cached to `fis.babelHelpers`
-        var helpers = fis.babelHelpers || (fis.babelHelpers = []);
-        usedHelpers.forEach(function (item) {
-            if (helpers.indexOf(item) === -1) {
-                helpers.push(item);
-            }
-        });
+        file.extras.babelHelpers = usedHelpers;
     }
 
-    options.speed || qrequire.unhook();
+    needUnhook || qrequire.unhook();
 
     // init source map
     var needSourceMap = options.sourceMaps;

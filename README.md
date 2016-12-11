@@ -23,7 +23,7 @@ fis.match('/src/**.js', {
 });
 ```
 
-By default, the babel helper api used information is saved to `file.extras.babelHelpers`, all files babel helper api used information is cached to `fis.babelHelpers`. If you using `babel-plugin-external-helpers plugin` plugin, you can lookup the used information from file `extras` or `fis.babelHelpers`.
+By default, the babel helper api used information is saved to `file.extras.babelHelpers`. If you using `babel-plugin-external-helpers plugin` plugin, you can lookup the used information from file `extras` property.
 
 ### Options
 
