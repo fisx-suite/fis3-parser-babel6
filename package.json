@@ -1,7 +1,7 @@
 {
   "name": "fis3-parser-babel6",
   "version": "0.1.0",
-  "description": "A parser for fis3 to compile es6 files",
+  "description": "A babel parser for fis3",
   "main": "index.js",
   "keywords": [
     "fis3",
@@ -23,6 +23,6 @@
   "author": "sparklwhy@gmail.com",
   "license": "ISC",
   "dependencies": {
-    "qrequire": "^0.1.1"
+    "qrequire": "^0.2.0"
   }
 }
