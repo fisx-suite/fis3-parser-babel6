@@ -51,11 +51,14 @@ function compile(content, file, conf) {
     }, readBabelConfig() || {}, conf);
 
     // hook require when enable speed
-    var needUnhook = false;
-    if (options.speed && !speeded) {
+    var useSpeed = options.speed;
+    delete options.speed;
+    if (useSpeed && !speeded) {
         qrequire.hook();
-        needUnhook = true;
         speeded = true;
+    }
+    else {
+        useSpeed = false;
     }
 
     // transform code
@@ -70,7 +73,7 @@ function compile(content, file, conf) {
         file.extras.babelHelpers = usedHelpers;
     }
 
-    needUnhook || qrequire.unhook();
+    useSpeed || qrequire.unhook();
 
     // init source map
     var needSourceMap = options.sourceMaps;

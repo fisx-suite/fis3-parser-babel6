@@ -27,9 +27,11 @@ fis.match('/src/**.js', {
 
 By default, the babel helper api used information is saved to `file.extras.babelHelpers`. If you using `babel-plugin-external-helpers plugin` plugin, you can lookup the used information from file `extras` property.
 
+If the processed fis file has `disableBabel` property set `true`, the parser will ignore this file.
+
 ### Options
 
-* disableBabel - `boolean` `optional`: if the processed file has disableBabel configure with `true`, the parser will ignore this file
-
 * speed - `boolean` `optional`: `experiment`, if you using npm2 to manage the dependencies, you can enable this options to speed up the babel startup time
+
+* more babel options, please refer [babel](https://babeljs.io/docs/usage/api/#options)
 
