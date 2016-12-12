@@ -1,5 +1,7 @@
 fis3-parser-babel6
 ======
+[![Dependency Status](https://david-dm.org/wuhy/fis3-parser-babel6.svg)](https://david-dm.org/wuhy/fis3-parser-babel6) [![devDependency Status](https://david-dm.org/wuhy/fis3-parser-babel6/dev-status.svg)](https://david-dm.org/wuhy/fis3-parser-babel6#info=devDependencies) [![NPM Version](https://img.shields.io/npm/v/fis3-parser-babel6.svg?style=flat)](https://npmjs.org/package/fis3-parser-babel6)
+
 > A babel 6 parser for fis3
 
 ## How to use
