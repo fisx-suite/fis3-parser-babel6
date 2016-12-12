@@ -8,6 +8,7 @@
 var path = require('path');
 var fs = require('fs');
 var qrequire = require('qrequire');
+var json5 = require('json5');
 
 var speeded = false;
 
@@ -21,7 +22,7 @@ function readBabelConfig() {
     var currDir = process.cwd();
     var babelRcFile = path.resolve(currDir, '.babelrc');
     if (_.isFile(babelRcFile)) {
-        return JSON.parse(fs.readFileSync(babelRcFile, 'utf-8'));
+        return json5.parse(fs.readFileSync(babelRcFile, 'utf-8'));
     }
 
     var pkgMetaFile = path.resolve(currDir, 'package.json');
