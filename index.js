@@ -47,7 +47,7 @@ function compile(content, file, conf) {
     // init options
     var _ = fis.util;
     var options = _.assign({
-        filename: file.subpath.substr(1) // remove start slash
+        filename: file.subpath.replace(/^\/+/, '') // remove start slash
     }, readBabelConfig() || {}, conf);
 
     // hook require when enable speed
@@ -76,13 +76,18 @@ function compile(content, file, conf) {
     useSpeed || qrequire.unhook();
 
     // init source map
-    var needSourceMap = options.sourceMaps;
-    if (needSourceMap && result.map) {
+    var sourceMaps = options.sourceMaps;
+    if (sourceMaps && sourceMaps !== 'inline' && result.map) {
         var sourceMapPath = file.realpath + '.map';
         var sourceMapFile = fis.file.wrap(sourceMapPath);
 
         sourceMapFile.setContent(JSON.stringify(result.map, null, 2));
         file.derived.push(sourceMapFile);
+
+        var sourceMapUrl = sourceMapFile.getUrl(
+            fis.compile.settings.hash, fis.compile.settings.domain
+        );
+        result.code += '\n//# sourceMappingURL=' + sourceMapUrl + '\n';
     }
 
     return result.code;
